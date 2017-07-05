@@ -1,9 +1,12 @@
+<?php $name = $_POST['username']; ?>
 <!DOCTYPE html>
 <html>
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <link rel="stylesheet" href="css/master.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <!-- Latest compiled and minified JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
@@ -14,9 +17,10 @@
 
     <div class="container">
       <div class="row">
-        <div class="col-md-12 text-center"><h1>Choose your action:</h1></div>
-        <div class="col-md-12"><a class="btn btn-default btn-lg btn-block" href="#" role="button"><h3>Take Something</h3></a></div>
-        <div class="col-md-12"><a class="btn btn-default btn-lg btn-block" href="#" role="button"><h3>Give Something</h3></a></div>
+        <div class="col-md-12 text-center"><h1>Welcome <?php echo $name; ?></h1></div>
+        <div class="col-md-12 text-center"><h2>Choose your action:</h2></div>
+        <div class="col-sm-12"><a class="btn btn-primary btn-default center-block btn-block" href="take-item.html" role="button"><h3>Take Something</h3></a></div>
+        <div class="col-sm-12"><a class="btn btn-primary btn-default center-block btn-block" href="give-item.html" role="button"><h3>Give Something</h3></a></div>
       </div>
     </div> <!-- /container -->
 
