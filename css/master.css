@@ -5,7 +5,35 @@
   margin-right: auto;
 }
 
-// Usage as a mixin
-.element {
-  .center-block();
+button.btn-default{
+  color: white;
+  background-color: #2185C5;
+  width: 300px;
+  height: 50px;
+}
+
+a.btn-default{
+  color: white;
+  background-color: #2185C5;
+  width: 300px;
+  height: 50px;
+}
+
+/*//Changing Font color
+h1{
+  color: #186392;
+}
+h2{
+  color: #186392;
+}
+*/
+
+.form-control{
+  width: 380px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.margin-top{
+  margin-top: 10px;
 }
