@@ -1,52 +1,129 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
-    <script type="text/javascript" src='http://maps.google.com/maps/api/js?key=AIzaSyDg9UFFCVK10elpg_UZ3sbldq8wh3JQVw4&libraries=places'></script>
-    <script src="js/locationpicker.jquery.js"></script>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-    <link rel="stylesheet" href="css/master.css">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  <link rel="stylesheet" href="css/master.css">
 
-    <!-- Latest compiled and minified JavaScript -->
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+  <!-- Latest compiled and minified JavaScript -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 
-    <title>Take an Item</title>
-  </head>
-  <body>
+  <title>Take an Item</title>
+</head>
+<body>
 
-    <div class="container">
-      <div class="row">
-        <div class="col-md-12 text-center"><h1>Choose location to <br> pick-up item</h1></div>
-        <div class="col-md-12 text-center">
-          Location: <input type="text" id="us2-address" style="width: 200px"/>
-        </div>
-        <br>
-        <div class="col-md-12 text-center">
-            <div id="us2" class="center-block" style="width: 380px; height: 380px;"></div>
-            <script>
-                $('#us2').locationpicker({
-                    location: {
-                        latitude: 59.3293,
-                        longitude: 18.0686
-                    },
-                    inputBinding: {
-                        latitudeInput: $('#us2-lat'),
-                        longitudeInput: $('#us2-lon'),
-                        locationNameInput: $('#us2-address')
-                    },
-                    enableAutocomplete: true,
-                    autocompleteOptions: {
-                    types: ['(regions)'],
-                    componentRestrictions: {country: 'se'}
-                  }
-                });
-            </script>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12 text-center"><h1>Choose location to <br> pick-up item</h1></div>
+      <form class="form-horizontal">
+      <div class="form-group">
+        <label class="col-sm-4 control-label">Location</label>
+        <div class="col-sm-5">
+          <select id="inputLocation" class="form-control">
+            <option>Kista Galleria</option>
+            <option>Electrum Building</option>
+            <option>Ericsson Office</option>
+            <option>Scandic Hotel</option>
+            <option>Kista Science Tower</option>
+          </select>
         </div>
       </div>
-    </div> <!-- /container -->
 
-  </body>
+      <script>
+      $(document).ready(function(){
+        $("#sc").click(function(){
+          $.ajax({
+            type: "POST",
+            //url:" http://Adde:Anna@localhost:8090/call/3a66203a35a176540802cf5c51dd6e842d880d8f/f99d92642d0619e11b51c317afcc72ef9f7fe7e3/addPerson?args=2017-01-06%20ecd6c61b43bb73fa62e980e9cda75b38%203f319da07634d52c01f4bb1998b420b2", //Add to the smart contract
+            //url: "http://Adde:Anna@localhost:8090/register?invitationkey=hej",//Add user to the system.
+            url: "http://jay:secret@192.168.43.243:8090/call/3000/ff262f8efd7cdfa20c3997480472b6033cd9e9ac/balance",
+            //"test.php",
+            //IPaddress+"/call/"+vmAddress+"/"+contractAddress+"/"+smartContractFunction+"?args="+date,
+            dataType: 'text',
+            processData: true,
+            async: true,
+            //data: {
+            //  item: $("#inputItem").val(),
+            //  tokens: $("#inputTokens").val(),
+            //  location: $("#inputLocation").val()
+            //},
+            //headers: {
+            //   "Authorization": "Basic " + btoa(Adde + ":" + Anna)
+            //},
+            success: function (result){
+              var data = JSON.parse(result);
+              console.log(data);
+              console.log("success!");
+            },
+            error: function(jqXHR, textStatus, errorThrown) {
+              console.log(jqXHR);
+              console.log(textStatus);
+              console.log(errorThrown);
+            }
+          });
+        });
+      });
+      </script>
+      <div class="col-md-12 text-center">
+        <div id="map">
+        </div>
+        <script type="text/javascript">
+        var latitude = 59.403143;
+        var longitude = 17.946796;
+        document.getElementById("inputLocation").onmouseup = function() {
+          var loc = $("#inputLocation").val()
+          switch (loc) {
+            case 'Kista Galleria':
+            latitude = 59.403143,
+            longitude = 17.946796
+            initMap(latitude, longitude);
+            break;
+            case 'Electrum Building':
+            latitude = 59.404492,
+            longitude = 17.950250
+            initMap(latitude, longitude);
+            break;
+            case 'Ericsson Office':
+            latitude = 59.405130,
+            longitude = 17.955695
+            initMap(latitude, longitude);
+            break;
+            case 'Scandic Hotel':
+            latitude = 59.407232,
+            longitude = 17.957786
+            initMap(latitude, longitude);
+            break;
+            case 'Kista Science Tower':
+            latitude = 59.401322,
+            longitude = 17.946134
+            initMap(latitude, longitude);
+            break;
+            default:
+          }
+        };
+        </script>
+        <script type="text/javascript">
+        function initMap() {
+          var uluru = {lat: latitude, lng: longitude};
+          var map = new google.maps.Map(document.getElementById('map'), {
+            zoom: 18,
+            center: uluru
+          });
+          var marker = new google.maps.Marker({
+            position: uluru,
+            map: map
+          });
+        }
+        </script>
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBM1JQUa5dC8IaIOWSCl927p_HZ8P_FM34&callback=initMap" async defer></script>
+      </div>
+      <div class="col-md-12 text-center margin-top"><button id="sc" class="btn btn-default"><h4>Sign Contract</h4></button></div>
+    </form>
+  </div>
+</div>
+
+</body>
 </html>

@@ -9,7 +9,6 @@
     <link rel="stylesheet" href="css/master.css">
     <!-- Latest compiled and minified JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-
     <title>Choose location</title>
   </head>
   <body>
@@ -80,6 +79,61 @@
                       });
                     });
                   </script>
+                  <br>
+                  <div class="col-md-12 text-center">
+                      <div id="map">
+                      </div>
+                      <script type="text/javascript">
+                          var latitude = 59.403143;
+                          var longitude = 17.946796;
+                          document.getElementById("inputLocation").onmouseup = function() {
+                            var loc = $("#inputLocation").val()
+                            switch (loc) {
+                              case 'Kista Galleria':
+                                  latitude = 59.403143,
+                                  longitude = 17.946796
+                                  initMap(latitude, longitude);
+                                break;
+                              case 'Electrum Building':
+                                  latitude = 59.404492,
+                                  longitude = 17.950250
+                                  initMap(latitude, longitude);
+                                break;
+                              case 'Ericsson Office':
+                                  latitude = 59.405130,
+                                  longitude = 17.955695
+                                  initMap(latitude, longitude);
+                                break;
+                              case 'Scandic Hotel':
+                                  latitude = 59.407232,
+                                  longitude = 17.957786
+                                  initMap(latitude, longitude);
+                                break;
+                              case 'Kista Science Tower':
+                                  latitude = 59.401322,
+                                  longitude = 17.946134
+                                  initMap(latitude, longitude);
+                                break;
+                              default:
+                            }
+                          };
+                      </script>
+                      <script type="text/javascript">
+                      function initMap() {
+                             var uluru = {lat: latitude, lng: longitude};
+                             var map = new google.maps.Map(document.getElementById('map'), {
+                               zoom: 18,
+                               center: uluru
+                             });
+                             var marker = new google.maps.Marker({
+                               position: uluru,
+                               map: map
+                             });
+                           }
+                      </script>
+                      <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBM1JQUa5dC8IaIOWSCl927p_HZ8P_FM34&callback=initMap" async defer></script>
+                  </div>
+
                 <div class="col-md-12 text-center"><button id="sc" class="btn btn-default"><h4>Sign Contract</h4></button></div>
             </div>
           </form>

@@ -37,3 +37,8 @@ h2{
 .margin-top{
   margin-top: 10px;
 }
+
+#map{
+  height: 400px;
+  width: 100%;
+}
