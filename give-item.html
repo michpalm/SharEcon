@@ -51,7 +51,7 @@
                             type: "POST",
                             //url:" http://Adde:Anna@localhost:8090/call/3a66203a35a176540802cf5c51dd6e842d880d8f/f99d92642d0619e11b51c317afcc72ef9f7fe7e3/addPerson?args=2017-01-06%20ecd6c61b43bb73fa62e980e9cda75b38%203f319da07634d52c01f4bb1998b420b2", //Add to the smart contract
                             //url: "http://Adde:Anna@localhost:8090/register?invitationkey=hej",//Add user to the system.
-                            url: "http://jay:secret@192.168.43.243:8090/call/3000/ff262f8efd7cdfa20c3997480472b6033cd9e9ac/balance",
+                            url: "http://jay:secret@192.168.43.243:8090/call/3000/7d2cc610d93e22d6c0c291ec501bee35d766da72/balance",
                             //"test.php",
                             //IPaddress+"/call/"+vmAddress+"/"+contractAddress+"/"+smartContractFunction+"?args="+date,
                             dataType: 'text',
@@ -62,9 +62,9 @@
                             //  tokens: $("#inputTokens").val(),
                             //  location: $("#inputLocation").val()
                             //},
-                            //headers: {
-                            //   "Authorization": "Basic " + btoa(Adde + ":" + Anna)
-                            //},
+                            headers: {
+                               "Authorization": "Basic " + btoa("jay:secret")
+                            },
                             success: function (result){
                               var data = JSON.parse(result);
                               console.log(data);
@@ -134,7 +134,7 @@
                       <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBM1JQUa5dC8IaIOWSCl927p_HZ8P_FM34&callback=initMap" async defer></script>
                   </div>
 
-                <div class="col-md-12 text-center"><button id="sc" class="btn btn-default"><h4>Sign Contract</h4></button></div>
+                <div class="col-md-12 text-center"><button id="sc" class="btn btn-default margin-top"><h4>Sign Contract</h4></button></div>
             </div>
           </form>
       </div>
