@@ -1,3 +1,6 @@
+<?php
+session_start();
+ ?>
 <!DOCTYPE html>
 <html>
   <head>
@@ -17,8 +20,7 @@
   <body>
 
     <div class="container">
-
-      <form class="form-horizontal" action="home.php" method="GET" role="form">
+      <form class="form-horizontal" action="login-check.php" method="POST" role="form">
         <h1 class="form-horizontal text-center">SharEcon</h1>
         <label for="inputUsername" class="sr-only">Username</label>
         <input name="username" type="username" id="inputUsername" class="form-control margin-top" placeholder="Username" required autofocus>

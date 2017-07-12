@@ -19,13 +19,9 @@ session_start();
   <body>
     <div class="container">
       <div class="row">
-        <script type="text/javascript">
-          var username = '<?php echo $_SESSION["username"]; ?>'
-          call_contract(username);
-        </script>
-        <div class="col-md-12 text-center"><h1>Welcome <?php echo $_SESSION["username"]; ?> <br> Choose your action:</h1></div>
-        <div class="col-md-12 text-center"><h2>Your current balance is, <div id="Balance"></div></h2></div>
-        <div class="col-md-12 text-center"><a class="btn btn-default" href="services.php" role="button"><h4>Services</h4></a></div>
+        <div class="col-md-12 text-center"><h1> Select your service:</h1></div>
+        <div class="col-md-12 text-center"><a class="btn btn-default" href="give-item.php" role="button"><h4>Me 2 Me</h4></a></div>
+        <div class="col-md-12 text-center"><a class="btn btn-default" href="take-item.php" role="button"><h4>Share/Book Item</h4></a></div>
       </div>
     </div> <!-- /container -->
 

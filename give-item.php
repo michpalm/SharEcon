@@ -1,3 +1,6 @@
+<?php
+session_start();
+ ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -11,7 +14,10 @@
   <title>Choose location</title>
 </head>
 <body>
-
+  <script type="text/javascript">
+    var username = '<?php echo $_SESSION["username"]; ?>'
+    document.getElementById("sc").onclick = function() {call_contract(username)};
+  </script>
   <div class="container">
     <div class="row">
       <div class="col-md-12 text-center"><h1>Set up your contract</h1></div>
@@ -41,32 +47,6 @@
           </div>
         </div>
         <div class="form-group">
-          <script>
-          $(document).ready(function(){
-            $("#sc").click(function(){
-              $.ajax({
-                type: "POST",
-                url: "http://jay:secret@192.168.43.243:8090/call/3000/7d2cc610d93e22d6c0c291ec501bee35d766da72/balance",
-                dataType: 'text',
-                processData: true,
-                async: true,
-                headers: {
-                  "Authorization": "Basic " + btoa("jay:secret")
-                },
-                success: function (result){
-                  var data = JSON.parse(result);
-                  console.log(data);
-                  console.log("success!");
-                },
-                error: function(jqXHR, textStatus, errorThrown) {
-                  console.log(jqXHR);
-                  console.log(textStatus);
-                  console.log(errorThrown);
-                }
-              });
-            });
-          });
-          </script>
           <div class="col-md-12 text-center">
             <div id="map">
             </div>
