@@ -1,3 +1,6 @@
+<?php
+include('test.php'); // Includes Login Script
+?>
 <!DOCTYPE html>
 <html>
   <head>
@@ -17,8 +20,8 @@
   <body>
 
     <div class="container">
-
-      <form class="form-horizontal" action="home.php" method="GET" role="form">
+      <?php if($_SESSION["loginerror"] == 1 ){echo 'Login Failed!'} ?>
+      <form class="form-horizontal" action="" method="POST" role="form">
         <h1 class="form-horizontal text-center">SharEcon</h1>
         <label for="inputUsername" class="sr-only">Username</label>
         <input name="username" type="username" id="inputUsername" class="form-control margin-top" placeholder="Username" required autofocus>
