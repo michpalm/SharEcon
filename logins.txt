@@ -1,7 +1,2 @@
-<<<<<<< HEAD
 1|michael|1995
 2|jay|1234
-=======
-1|Mike|1995
-2|Jay|JayNagdeo
->>>>>>> master
