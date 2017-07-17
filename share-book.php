@@ -19,14 +19,9 @@ session_start();
   <body>
     <div class="container">
       <div class="row">
-        <script type="text/javascript">
-          var username = '<?php echo $_SESSION["username"]; ?>'
-          var methodToCall = 'balance';
-          call_contract(username, methodToCall);
-        </script>
-        <div class="col-md-12 text-center"><h1>Welcome <?php echo $_SESSION["username"]; ?> <br> Choose your action:</h1></div>
-        <div class="col-md-12 text-center"><h2>Your current balance is, <div id="Balance"></div></h2></div>
-        <div class="col-md-12 text-center"><a class="btn btn-default" href="services.php" role="button"><h4>Services</h4></a></div>
+        <div class="col-md-12 text-center"><h1>Share or Book items:</h1></div>
+        <div class="col-md-12 text-center"><a class="btn btn-default" href="give-item.php" role="button"><h4>Share</h4></a></div>
+        <div class="col-md-12 text-center"><a class="btn btn-default" href="take-item.php" role="button"><h4>Book</h4></a></div>
       </div>
     </div> <!-- /container -->
 
