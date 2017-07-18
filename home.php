@@ -21,8 +21,9 @@ session_start();
       <div class="row">
         <script type="text/javascript">
           var username = '<?php echo $_SESSION["username"]; ?>'
+          var password = '<?php echo $_SESSION["pass"]; ?>'
           var methodToCall = 'balance';
-          call_contract(username, methodToCall);
+          call_contract(username, password, methodToCall);
         </script>
         <div class="col-md-12 text-center"><h1>Welcome <?php echo $_SESSION["username"]; ?> <br> Choose your action:</h1></div>
         <div class="col-md-12 text-center"><h2>Your current balance is, <div id="Balance"></div></h2></div>

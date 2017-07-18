@@ -20,6 +20,16 @@ session_start();
   <body>
 
     <div class="container">
+      <?php
+
+      if(isset($_GET["success"])) echo
+      '
+      <script>
+          alert("User succesfully created!");
+      </script>
+      ';
+
+       ?>
       <form class="form-horizontal" action="login-check.php" method="POST" role="form">
         <h1 class="form-horizontal text-center">SharEcon</h1>
         <label for="inputUsername" class="sr-only">Username</label>
@@ -27,6 +37,7 @@ session_start();
         <label for="inputPassword" class="sr-only">Password</label>
         <input name="password" type="password" id="inputPassword" class="form-control margin-top" placeholder="Password" required>
         <div class="col-md-12 text-center"><button class="btn btn-default margin-top" type="submit"> <h4>Log in</h4></button></div>
+        <div class="col-md-12 text-center"><a class="btn btn-default" href="register.php" role="button"><h4>Register</h4></a></div>
 
       </form>
 

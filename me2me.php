@@ -23,7 +23,7 @@ session_start();
         <div class="form-group">
           <label for="inputItem" class="col-sm-4 control-label">What is being shared?</label>
           <div class="col-sm-5">
-            <input name="item" type="item" class="form-control" id="inputItem" placeholder="Item, Service, etc...">
+            <input name="item" class="form-control" id="inputItem" placeholder="Item, Service, etc...">
           </div>
         </div>
         <div class="form-group">
@@ -92,6 +92,7 @@ session_start();
                   var unit = legs[0].distance.text;
                   $("#floating-panel").html("<b> Distance: "+ unit +"</b>");
                   console.log(unit);
+                  //console.log(origin);
                 } else {
                   window.alert('Directions request failed due to ' + status);
                 }
@@ -104,8 +105,11 @@ session_start();
           <div class="col-md-12 text-center"><input value="Sign Contract" type="button" id="sc" class="btn btn-default margin-top"></input></div>
           <script type="text/javascript">
             var username = '<?php echo $_SESSION["username"]; ?>'
+            var password = '<?php echo $_SESSION["pass"]; ?>'
             var methodToCall = 'objTransfer';
-            document.getElementById("sc").onclick = function(){call_contract(username, methodToCall);};
+            document.getElementById("sc").onclick = function(){
+              call_contract(username, password, methodToCall);
+            };
           </script>
         </div>
       </form>

@@ -2,13 +2,14 @@
 #always use same file for logins
 $user_accounts_file = 'logins.txt';
 $uname = htmlspecialchars($_POST["username"]);
-$pass = htmlspecialchars($_POST["password"]);
+$pass = ($_POST["password"]);
 
 #test if an account exisits with username $uname and password $pass
 if(true === check_user($user_accounts_file, $uname, $pass))
 {
   session_start();
   $_SESSION["username"] = $uname;
+  $_SESSION["pass"] = $pass;
 	header('Location: home.php');
   exit;
 }
