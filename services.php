@@ -22,6 +22,7 @@ session_start();
         <div class="col-md-12 text-center"><h1>Select your service:</h1></div>
         <div class="col-md-12 text-center"><a class="btn btn-default" href="me2me.php" role="button"><h4>Me 2 Me</h4></a></div>
         <div class="col-md-12 text-center"><a class="btn btn-default" href="share-book.php" role="button"><h4>Share/Book Item</h4></a></div>
+        <div class="col-md-12 text-center"><a class="btn btn-default" href="deliver.php" role="button"><h4>Deliver</h4></a></div>
       </div>
     </div> <!-- /container -->
 
