@@ -2,3 +2,7 @@
 2|jay|secret
 3|abin|secret
 coke@test.com|coke|9999
+intel@test.com|intel|intel
+opo@test.com|opo|opo
+mac@test.com|mac|mac
+pi@test.com|pi|pi

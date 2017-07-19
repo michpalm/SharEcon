@@ -20,16 +20,7 @@ session_start();
   <body>
 
     <div class="container">
-      <?php
 
-      if(isset($_GET["success"])) echo
-      '
-      <script>
-          alert("User succesfully created!");
-      </script>
-      ';
-
-       ?>
       <form class="form-horizontal" action="login-check.php" method="POST" role="form">
         <h1 class="form-horizontal text-center">SharEcon</h1>
         <label for="inputUsername" class="sr-only">Username</label>

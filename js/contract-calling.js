@@ -6,11 +6,13 @@ function call_contract(username, password, methodToCall){
 
     switch (methodToCall) {
       case 'balance':
-      console.log("Switch case ok!");
+        console.log("Checking balance...");
         newAccount=false;
         urlT = "http://" + username + ":" + password + "@" + ipAddress + ":8090" + "/call/" + cumulusVM + "/" + contractHash + "/" + methodToCall
         break;
       case 'objTransfer':
+        newAccount=false;
+        console.log("Setting up contract...");
         var sel1 = document.getElementById("inputOrigin");
         var origin = sel1.options[sel1.selectedIndex].text;
         var sel2 = document.getElementById("inputDestination");
@@ -19,6 +21,8 @@ function call_contract(username, password, methodToCall){
         urlT = "http://" + username + ":" + password + "@" + ipAddress + ":8090" + "/call/" + cumulusVM + "/" + contractHash + "/" + methodToCall + "?args=" + item + "%20" + origin + "%20" + destination
         break;
       case 'register':
+        newAccount=true;
+        console.log("Creating user...");
         var newUser = document.getElementById("newUser").value;
         var newEmail = document.getElementById("newEmail").value;
         var newPassword = document.getElementById("newPassword").value;
@@ -28,7 +32,6 @@ function call_contract(username, password, methodToCall){
     }
 
     if (newAccount==true) {
-      console.log("Wrong!!!");
       $.ajax({
         type: "POST",
         url: urlT,
@@ -39,9 +42,10 @@ function call_contract(username, password, methodToCall){
           "Authorization": "Basic " + btoa(newUser + ":" + newPassword)
         },
         success: function (){
+          console.log("User created!");
+          console.log("Success!");
+          console.log("Redirecting to login page...");
           window.location.replace("success.php?user="+ newUser + "&email=" + newEmail + "&pass=" + newPassword);
-          //$.get("success.php", { user: newUser, email: newEmail, pass: newPassword});
-          console.log("success!");
         },
         error: function(jqXHR, textStatus, errorThrown) {
           console.log(jqXHR);
@@ -51,11 +55,9 @@ function call_contract(username, password, methodToCall){
       });
 
     } else {
-      console.log("Ajax!");
       $.ajax({
         type: "POST",
         url: urlT,
-        dataType: 'JSON',
         contenType: 'text/plain',
         processData: true,
         async: true,
@@ -63,15 +65,15 @@ function call_contract(username, password, methodToCall){
           "Authorization": "Basic " + btoa(username + ":" + password)
         },
         success: function (result){
-          var data = JSON.parse(result);
           if (methodToCall=='balance') {
-            $("#Balance").html("<p>"+ data +" tokens</p>");
+            $("#Balance").html("<p>"+ result +" tokens</p>");
+            console.log("Balance updated!");
           }
           if (methodToCall=='objTransfer') {
             console.log("Contract Signed!");
           }
           console.log(result);
-          console.log("success!");
+          console.log("Success!");
         },
         error: function(jqXHR, textStatus, errorThrown) {
           console.log(jqXHR);
