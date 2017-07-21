@@ -1,7 +1,7 @@
 function call_contract(username, password, methodToCall){
 
     var ipAddress = '129.192.20.176';
-    var contractHash = 'dd97012cef2c187070b2c32fc6a8d2504f941623';
+    var contractHash = 'b1c341807822d399146da021f0aeaea736431c93';
     var cumulusVM = '1122';
 
     switch (methodToCall) {

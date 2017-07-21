@@ -14,6 +14,13 @@ session_start();
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
     <script src="js\contract-calling.js"></script>
 
+    <script type="text/javascript" src="https://cdn.emailjs.com/dist/email.min.js"></script>
+    <script type="text/javascript">
+    (function(){
+      emailjs.init("user_oO0Mv06TlWtXYaM9F5de6");
+    })();
+    </script>
+
     <title>Home</title>
   </head>
   <body>
@@ -28,6 +35,30 @@ session_start();
         <div class="col-md-12 text-center"><h1>Welcome <?php echo $_SESSION["username"]; ?> <br> Choose your action:</h1></div>
         <div class="col-md-12 text-center"><h2>Your current balance is, <div id="Balance"></div></h2></div>
         <div class="col-md-12 text-center"><a class="btn btn-default" href="services.php" role="button"><h4>Services</h4></a></div>
+        <div class="col-md-12 text-center" id="transport" style="display: none"><input value="Finish delivery" type="button" id="done" class="btn btn-default margin-top"></input></div>
+
+        <script type="text/javascript">
+          //var transport = '<?php if(isset($_SESSION["transporting"])){echo $_SESSION["transporting"];}else{echo 'empty';}?>'
+          var toEmail = '<?php if(isset($_SESSION["toEmail"])){echo $_SESSION["toEmail"];}else{echo 'empty';}?>'
+          console.log(toEmail);
+          if(toEmail!='empty'){
+            document.getElementById('transport').style.display = "block";
+          }
+          document.getElementById("done").onclick = function(){
+            console.log(toEmail);
+            emailjs.send("default_service","delivered",{to_email: toEmail})
+            .then(
+              function(response) {
+                console.log("SUCCESS", response);
+              }, 
+              function(error) {
+                console.log("FAILED", error);
+              }
+            );
+            <?php unset($_SESSION["toEmail"]) ?>
+            window.location.replace("home.php");
+          };
+        </script>
       </div>
     </div> <!-- /container -->
 

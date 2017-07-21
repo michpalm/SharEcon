@@ -28,10 +28,10 @@ input[type="button"]{
 
 /*//Changing Font color
 h1{
-  color: #186392;
+color: #186392;
 }
 h2{
-  color: #186392;
+color: #186392;
 }
 */
 
@@ -50,19 +50,24 @@ h2{
   width: 100%;
 }
 input[type="button"] {
-    font-size:20px;
+  font-size:20px;
 }
 
 #floating-panel {
-        position: absolute;
-        top: 10px;
-        left: 25%;
-        z-index: 5;
-        background-color: #fff;
-        padding: 5px;
-        border: 1px solid #999;
-        text-align: center;
-        font-family: 'Roboto','sans-serif';
-        line-height: 30px;
-        padding-left: 10px;
-      }
+  position: absolute;
+  top: 10px;
+  left: 25%;
+  z-index: 5;
+  background-color: #fff;
+  padding: 5px;
+  border: 1px solid #999;
+  text-align: center;
+  font-family: 'Roboto','sans-serif';
+  line-height: 30px;
+  padding-left: 10px;
+}
+
+.optionsDiv{
+  width: 280px;
+  margin: auto;
+}
