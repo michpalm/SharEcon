@@ -40,23 +40,28 @@ session_start();
         <script type="text/javascript">
           //var transport = '<?php if(isset($_SESSION["transporting"])){echo $_SESSION["transporting"];}else{echo 'empty';}?>'
           var toEmail = '<?php if(isset($_SESSION["toEmail"])){echo $_SESSION["toEmail"];}else{echo 'empty';}?>'
-          console.log(toEmail);
           if(toEmail!='empty'){
             document.getElementById('transport').style.display = "block";
           }
           document.getElementById("done").onclick = function(){
             console.log(toEmail);
+            var username = '<?php echo $_SESSION["username"]; ?>'
+            var password = '<?php echo $_SESSION["pass"]; ?>'
+            var methodToCall = 'transferDones';
             emailjs.send("default_service","delivered",{to_email: toEmail})
             .then(
               function(response) {
                 console.log("SUCCESS", response);
-              }, 
+
+                call_contract(username, password, methodToCall);
+                <?php unset($_SESSION["toEmail"]) ?>
+                window.location.replace("home.php");
+              },
               function(error) {
                 console.log("FAILED", error);
               }
             );
-            <?php unset($_SESSION["toEmail"]) ?>
-            window.location.replace("home.php");
+
           };
         </script>
       </div>

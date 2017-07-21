@@ -100,31 +100,33 @@ session_start();
 
               var toEmail = document.querySelector('input[name="optionsRadios"]:checked').value;
 
-              console.log(toEmail);
+              console.log("Sending to: " + toEmail);
               emailjs.send("default_service","in_transit",{to_email: toEmail})
               .then(
                 function(response) {
                   console.log("SUCCESS", response);
+                  jQuery.ajax({
+                    url: 'pass-email.php',
+                    type: 'POST',
+                    data: {
+                      "data":toEmail
+                    },
+                    success: function(result) {
+                      console.log("Pass email said: " + result);
+                      console.log("its done!!!!");
+                      window.location.replace("home.php");
+                    },
+                    error: function(xhr, textStatus, errorThrown) {
+                      console.log(textStatus.reponseText);
+                    }
+                  });
+
                 },
                 function(error) {
                   console.log("FAILED", error);
                 }
               );
-              jQuery.ajax({
-                url: 'pass-email.php',
-                type: 'POST',
-                data: {
-                  "data":toEmail
-                },
-                success: function(result) {
-                  console.log(result);
-                  console.log("its done!!!!");
-                },
-                error: function(xhr, textStatus, errorThrown) {
-                  console.log(textStatus.reponseText);
-                }
-              });
-              window.location.replace("home.php");
+
               //call_contract(username, password, methodToCall);
             };
           </script>

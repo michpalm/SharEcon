@@ -28,6 +28,11 @@ function call_contract(username, password, methodToCall){
         var newPassword = document.getElementById("newPassword").value;
         urlT = "http://" + newUser + ":" + newPassword + "@" + ipAddress + ":8090" + "/" + methodToCall + "?invitationkey=hej"
         break;
+      case 'transferDones':
+        newAccount=false;
+        console.log("Finalizing trasport...");
+        urlT = "http://" + username + ":" + password + "@" + ipAddress + ":8090" + "/call/" + cumulusVM + "/" + contractHash + "/" + methodToCall
+        break;
       default:
     }
 
@@ -71,6 +76,9 @@ function call_contract(username, password, methodToCall){
           }
           if (methodToCall=='objTransfer') {
             console.log("Contract Signed!");
+          }
+          if (methodToCall=='transferDones') {
+            console.log("Transfer Done!!");
           }
           console.log(result);
           console.log("Success!");
