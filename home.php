@@ -48,20 +48,19 @@ session_start();
             var username = '<?php echo $_SESSION["username"]; ?>'
             var password = '<?php echo $_SESSION["pass"]; ?>'
             var methodToCall = 'transferDones';
+            call_contract(username, password, methodToCall);
             emailjs.send("default_service","delivered",{to_email: toEmail})
             .then(
               function(response) {
                 console.log("SUCCESS", response);
-
-                call_contract(username, password, methodToCall);
                 <?php unset($_SESSION["toEmail"]) ?>
                 window.location.replace("home.php");
+
               },
               function(error) {
                 console.log("FAILED", error);
               }
             );
-
           };
         </script>
       </div>

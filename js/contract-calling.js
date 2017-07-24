@@ -82,6 +82,7 @@ function call_contract(username, password, methodToCall){
           }
           console.log(result);
           console.log("Success!");
+          return true;
         },
         error: function(jqXHR, textStatus, errorThrown) {
           console.log(jqXHR);

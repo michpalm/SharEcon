@@ -108,7 +108,7 @@ session_start();
             var password = '<?php echo $_SESSION["pass"]; ?>'
             var methodToCall = 'objTransfer';
             document.getElementById("sc").onclick = function(){
-              call_contract(username, password, methodToCall);
+              call_contract(username, password, methodToCall) ;
             };
           </script>
         </div>
