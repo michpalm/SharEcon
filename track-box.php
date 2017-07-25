@@ -29,18 +29,21 @@
       function initMap() {
         map = new google.maps.Map(document.getElementById('map'), {
           center: {lat: 59.4064, lng: 17.9361},
-          zoom: 6
+          zoom: 16
         });
         infoWindow = new google.maps.InfoWindow;
 
         // every 10 seconds
-        setInterval(updateMarker,1000);
+        setInterval(updateMarker,3000);
 
         function updateMarker() {
+          var latN = 59 + (Math.random() * (0.4099 - 0.4000) + 0.4000);
+          var lngN = 17 + (Math.random() * (0.9499 - 0.9300) + 0.9300)
           var pos = {
-            lat: 59. + Math.random(),
-            lng: 17. + Math.random()
+            lat: parseFloat(latN.toPrecision(6)),
+            lng: parseFloat(lngN.toPrecision(6))
           };
+            console.log(pos);
             infoWindow.setPosition(pos);
             infoWindow.setContent('Your box');
             infoWindow.open(map);
