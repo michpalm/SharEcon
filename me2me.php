@@ -62,6 +62,7 @@ session_start();
             <div id="map">
             </div>
             <script type="text/javascript">
+            //Google Maps api functions
             function initMap() {
               var directionsService = new google.maps.DirectionsService;
               var directionsDisplay = new google.maps.DirectionsRenderer;

@@ -73,6 +73,9 @@ session_start();
         </div>
             <script type="text/javascript">
 
+            //Checks for changes in the route fields
+            //If the route matches Kistagången to Grönlandsgången it shows 3 boxes
+            //Simulating a case where the users route matches the box route
             var onChangeHandler = function() {
                var origin = document.getElementById('inputOrigin').value;
                var destination = document.getElementById('inputDestination').value;
@@ -92,12 +95,17 @@ session_start();
           </div>
           <div class="col-md-12 text-center"><input value="Deliver" type="button" id="dlvr" class="btn btn-default margin-top"></input></div>
           <script type="text/javascript">
+
+            //Sends email to "owner" of the box being deliverd to update on status
+            //Currently does not post any contract call from Cumulus
             var username = '<?php echo $_SESSION["username"]; ?>'
             var password = '<?php echo $_SESSION["pass"]; ?>'
 
             var methodToCall = 'balance';
             document.getElementById("dlvr").onclick = function(){
 
+              //Selects email included in the value of the box fileds
+              //Simulates fetching email to "owner" of the box to be delivered
               var toEmail = document.querySelector('input[name="optionsRadios"]:checked').value;
 
               console.log("Sending to: " + toEmail);
@@ -127,6 +135,7 @@ session_start();
                 }
               );
 
+              //Not in use currently
               //call_contract(username, password, methodToCall);
             };
           </script>

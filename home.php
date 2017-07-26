@@ -38,11 +38,16 @@ session_start();
         <div class="col-md-12 text-center" id="transport" style="display: none"><input value="Finish delivery" type="button" id="done" class="btn btn-default margin-top"></input></div>
 
         <script type="text/javascript">
-          //var transport = '<?php if(isset($_SESSION["transporting"])){echo $_SESSION["transporting"];}else{echo 'empty';}?>'
+
+          //Displays the Finish Delivery field only if toEmail session is set
+          //Which only happens if the user is currently delivering a box
           var toEmail = '<?php if(isset($_SESSION["toEmail"])){echo $_SESSION["toEmail"];}else{echo 'empty';}?>'
           if(toEmail!='empty'){
             document.getElementById('transport').style.display = "block";
           }
+
+          //Sends email to owner of the box being delivered and calls transferDones contract
+          //When done it unsets the seesion of 'toEmail' hiding the Finish Delivery button
           document.getElementById("done").onclick = function(){
             console.log(toEmail);
             var username = '<?php echo $_SESSION["username"]; ?>'

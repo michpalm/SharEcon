@@ -5,7 +5,7 @@ $uname = htmlspecialchars($_GET["user"]);
 $email = htmlspecialchars($_GET["email"]);
 $password = ($_GET["pass"]);
 
-
+#Redirects to login page if account is created successfully
 if(true === create_user($user_accounts_file, $uname, $email, $password))
 {
 	header('Location: login.php?success=true');
@@ -16,7 +16,7 @@ else if(false === check_user($user_accounts_file, $uname, $email, $password)){
   exit;
 }
 
-
+#Checks if "logins" file exisits, creates a user if its true
 function create_user($user_accounts_file, $uname, $email, $password)
 {
 	if(false === file_exists($user_accounts_file))
@@ -41,5 +41,4 @@ function create_user($user_accounts_file, $uname, $email, $password)
 		FILE_APPEND
 	);
 }
-#test if an account exisi
 ?>

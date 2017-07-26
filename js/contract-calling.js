@@ -4,10 +4,11 @@ function call_contract(username, password, methodToCall){
     var contractHash = '55a820e190370d3e6e2b6a7541d01f4c0b9d7927';
     var cumulusVM = '1122';
 
+    //Swtich case for selecting post call based on method call
     switch (methodToCall) {
       case 'balance':
+      newAccount=false;
         console.log("Checking balance...");
-        newAccount=false;
         urlT = "http://" + username + ":" + password + "@" + ipAddress + ":8090" + "/call/" + cumulusVM + "/" + contractHash + "/" + methodToCall
         break;
       case 'objTransfer':
@@ -36,6 +37,7 @@ function call_contract(username, password, methodToCall){
       default:
     }
 
+    //Special ajax call for registering users due to header Authorization
     if (newAccount==true) {
       $.ajax({
         type: "POST",
@@ -59,7 +61,9 @@ function call_contract(username, password, methodToCall){
         }
       });
 
-    } else {
+    }
+    //Regular Ajax call for the rest of the contracts with different actions based on success
+    else {
       $.ajax({
         type: "POST",
         url: urlT,

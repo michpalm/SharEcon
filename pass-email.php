@@ -1,14 +1,12 @@
 <?php
  session_start();
-//$json = '{"foo-bar": 12345}';
-//
-//$obj = json_decode($_POST['data']);
+
+//Saves the posted information to an email session
+//(in this case its the email of the user!)
 $_SESSION['toEmail'] = $_POST['data'];
 
- $ret = $_SESSION['toEmail'];
-
+//Echos the session value
+$ret = $_SESSION['toEmail'];
 echo $ret;
-//$_SESSION['toEmail'] = $_POST['data'];
 
-
- ?>
+?>
