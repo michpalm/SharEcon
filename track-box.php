@@ -5,12 +5,9 @@
     <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
     <meta charset="utf-8">
     <style>
-      /* Always set the map height explicitly to define the size of the div
-       * element that contains the map. */
       #map {
         height: 100%;
       }
-      /* Optional: Makes the sample page fill the window. */
       html, body {
         height: 100%;
         margin: 0;
@@ -21,10 +18,6 @@
   <body>
     <div id="map"></div>
     <script>
-      // Note: This example requires that you consent to location sharing when
-      // prompted by your browser. If you see the error "The Geolocation service
-      // failed.", it means you probably did not give permission for the browser to
-      // locate you.
       var map, infoWindow;
       function initMap() {
         map = new google.maps.Map(document.getElementById('map'), {
@@ -33,9 +26,11 @@
         });
         infoWindow = new google.maps.InfoWindow;
 
-        // every 10 seconds
+        // every 3 seconds
         setInterval(updateMarker,3000);
 
+        //Function to update postition
+        //Currently random generated inside Kista area
         function updateMarker() {
           var latN = 59 + (Math.random() * (0.4099 - 0.4000) + 0.4000);
           var lngN = 17 + (Math.random() * (0.9499 - 0.9300) + 0.9300)
