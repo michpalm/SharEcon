@@ -10,7 +10,7 @@ if(true === check_user($user_accounts_file, $uname, $pass))
   session_start();
   $_SESSION["username"] = $uname;
   $_SESSION["pass"] = $pass;
-	header('Location: home.php');
+	header('Location: ../user/home.php');
   exit;
 }
 else if(false === check_user($user_accounts_file, $uname, $pass)){
@@ -18,7 +18,7 @@ else if(false === check_user($user_accounts_file, $uname, $pass)){
 
            $_SESSION["loginerror"] = 1;
 
-        header("Location:login.php");
+        header("Location: ../user/login.php");
         exit;
 }
 

@@ -8,11 +8,11 @@ $password = ($_GET["pass"]);
 #Redirects to login page if account is created successfully
 if(true === create_user($user_accounts_file, $uname, $email, $password))
 {
-	header('Location: login.php?success=true');
+	header('Location: ../user/login.php?success=true');
   exit;
 }
 else if(false === check_user($user_accounts_file, $uname, $email, $password)){
-  header("Location: register.php");
+  header("Location: ../user/register.php");
   exit;
 }
 

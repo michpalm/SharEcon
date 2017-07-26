@@ -52,7 +52,7 @@ function call_contract(username, password, methodToCall){
           console.log("User created!");
           console.log("Success!");
           console.log("Redirecting to login page...");
-          window.location.replace("success.php?user="+ newUser + "&email=" + newEmail + "&pass=" + newPassword);
+          window.location.replace("../resources/success.php?user="+ newUser + "&email=" + newEmail + "&pass=" + newPassword);
         },
         error: function(jqXHR, textStatus, errorThrown) {
           console.log(jqXHR);
